@@ -41,11 +41,11 @@ function resolveForm (){
 
 
 <form>
-    <label for="secretAuthor">The hidden author name:</label>
-    <input type="password" id="secretAuthor" value="Dickens" required><br>
+    <label for="definedAuthor">The hidden author name:</label>
+    <input type="password" id="definedAuthor" value="Dickens" required><br>
 
-    <label for="guessAuthor">Guess the author:</label>
-    <input type="text" id="guessAuthor" required><br>
+    <label for="guessInput">Guess the author:</label>
+    <input type="text" id="guessInput" required><br>
 
     <input type="button" value="Check the guess" onclick="checkAuthor()"><br>
     <p id="result"></p>
@@ -55,18 +55,19 @@ function resolveForm (){
     let oops = 0;
 
     function checkAuthor() {
-        const secretAuthorInput = document.getElementById('secretAuthor').value;
-        const guessAuthorInput = document.getElementById('guessAuthor').value;
+        console.log("Getting form values")
+        const definedAuthorValue = document.getElementById('definedAuthor').value;
+        const guessInput = document.getElementById('guessInput').value;
 
-        if (secretAuthorInput === guessAuthorInput) {
+        if (definedAuthorValue === guessInput) {
             good++;
             alert("You got it right!");
         } else {
             oops++;
             alert("Sorry");
         }
-        const resultElement = document.getElementById('result');
-        resultElement.innerHTML = `Correct Guesses: ${good} | Incorrect Guesses: ${oops}`;
+        const resultValue = document.getElementById('result');
+        resultValue.innerHTML = `Correct Guess: ${good} | Incorrect Guess: ${oops}`;
     }
 </script>
 
