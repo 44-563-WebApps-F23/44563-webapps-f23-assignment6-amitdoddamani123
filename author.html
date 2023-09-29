@@ -44,8 +44,8 @@ function resolveForm (){
     <label for="definedAuthor">The hidden author name:</label>
     <input type="password" id="definedAuthor" value="Dickens" required><br>
 
-    <label for="guessInput">Guess the author:</label>
-    <input type="text" id="guessInput" required><br>
+    <label for="userInput">Guess the author:</label>
+    <input type="text" id="userInput" required><br>
 
     <input type="button" value="Check the guess" onclick="checkAuthor()"><br>
     <p id="result"></p>
@@ -57,17 +57,17 @@ function resolveForm (){
     function checkAuthor() {
         console.log("Getting form values")
         const definedAuthorValue = document.getElementById('definedAuthor').value;
-        const guessInput = document.getElementById('guessInput').value;
-
-        if (definedAuthorValue === guessInput) {
-            good++;
+        const userInput = document.getElementById('userInput').value;
+        const resultValue = document.getElementById('result');
+        if (definedAuthorValue === userInput) {
+            good=good+1;
             alert("You got it right!");
         } else {
-            oops++;
+            oops=oops+1;
             alert("Sorry");
         }
-        const resultValue = document.getElementById('result');
-        resultValue.innerHTML = `Correct Guess: ${good} | Incorrect Guess: ${oops}`;
+        
+        resultValue.innerHTML = `Correct Guess= ${good} | Incorrect Guess= ${oops}`;
     }
 </script>
 
