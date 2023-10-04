@@ -4,6 +4,22 @@
  <title>Web Apps Assingment 6</title>
  <h2>Author Entry Amit</h2>
  </head>
+ <style>
+    .delhimage{
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+    .border{
+        border-radius: 50px 20px;
+    }
+    .container{
+    width: 90%;
+    margin: 0px auto;
+}
+</style>
+
+
 <body>
 
 <h2>Getting input</h2>
@@ -70,6 +86,33 @@ function resolveForm (){
         resultValue.innerHTML = `Correct Guess= ${good} | Incorrect Guess= ${oops}`;
     }
 </script>
+</div>
+<div class="ImageContainer">
+    <img id="displayed" onclick="selectImage()" src="./delhi.JPG" alt="delhi image" class="delhimage"/>
+</div>
 
 </body>
+
+<script>
+var useImage = 1;
+    function selectImage(){
+        var img1 = document.getElementById("displayed");
+        switch (useImage) {
+            case 1:
+            img1.src = "./delhi.jpg";
+            useImage = 2;
+            break;
+            case 2 : 
+            img1.src = "./oslo.jpg" ;
+            useImage = 3;
+            break;
+            case 3 : 
+            img1.src = "./NewYork.jpg" ;
+            useImage = 1;
+            break;
+        }
+    }
+
+</script>
+
 </html> 
