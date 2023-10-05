@@ -3,7 +3,7 @@
     <head>
  <title>Web Apps Assingment 6</title>
  <h2>Author Entry Amit</h2>
- </head>
+ 
  <style>
     .delhimage{
     width: 100px;
@@ -18,112 +18,84 @@
     margin: 0px auto;
 }
 </style>
-
+</head>
 
 <body>
 
-<h2>Getting input</h2>
+    <div class="container">
+        <form>
+            <div class="form-group">
+                <label for="password">The hidden author name</label><br>
+                <input class=" border border-secondary" type="password" id="password" value= "Dickens" name="password">
+            </div>
 
-<form>
-    <label for="form1_age">What is your age </label>
-    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+           <div class="form-group">
+            <label for="guessAuthorname">Guess the author</label><br>
+            <input class=" border" type="text" id="guessAuthor" name="guessAuthor" required>
+           </div><br/>
 
-    <label for="form1_nick">What is your nickname </label>
-    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
+           <div class="form-group">
+            <button type="button" class="btn btn-secondary" id="authorBtn" onclick= "checkAuthor()">Check the guess</button>
+           </div>
 
-    <input type="button" onclick="resolveForm()" value="Get values from form">
-</form>
+          </form>
 
+          <p id="goodCounter"></p>
+          <p id="oopsCounter"></p>
+          <div class="img-container">
+                <img id="display" onclick="selectImage()" src="./delhi.JPG" alt="Delhi image" class="delhimage"/>
+          </div>
+        </div>
+    </body>
 
-<p id="result">This text will be replaced </p>
+    <script>
 
-<script> 
-
-function resolveForm (){
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
-    
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
-    }
-}
-</script>
-
-
-
-<form>
-    <label for="definedAuthor">The hidden author name:</label>
-    <input type="password" id="definedAuthor" value="Dickens" required><br>
-
-    <label for="userInput">Guess the author:</label>
-    <input type="text" id="userInput" required><br>
-
-    <input type="button" value="Check the guess" onclick="checkAuthor()"><br>
-    <p id="result"></p>
-</form>
-<script>
-    let good = 0;
-    let oops = 0;
-
-    function checkAuthor() {
-        console.log("Getting form values")
-        const definedAuthorValue = document.getElementById('definedAuthor').value;
-        const userInput = document.getElementById('userInput').value;
-        const resultValue = document.getElementById('result');
-        if (definedAuthorValue === userInput) {
-            good=good+1;
-            alert("You got it right!");
-        } else {
-            oops=oops+1;
-            alert("Sorry");
-        }
-
-        if (oops > 6 ) {
-            let authButton = document.getElementById('authorBtn');
-            authButton.onclick = errorMsg ;
-        }
-        
-        resultValue.innerHTML = `Correct Guess= ${good} | Incorrect Guess= ${oops}`;
-    }
-
-
-    function errorMsg() {
-        alert("Sorry, ran out of guesses");
-    }
-    
-</script>
-</div>
-<div class="ImageContainer">
-    <img id="displayed" onclick="selectImage()" src="./delhi.JPG" alt="delhi image" class="delhimage"/>
-</div>
-
-</body>
-
-<script>
-var useImage = 1;
+    var useImage = 1;
     function selectImage(){
-        var img1 = document.getElementById("displayed");
+        var img1 = document.getElementById("display");
         switch (useImage) {
             case 1:
-            img1.src = "./delhi.jpg";
+            img1.src = "./delhi.JPG";
             useImage = 2;
             break;
-            case 2 : 
-            img1.src = "./oslo.jpg" ;
+            case 2 :
+            img1.src = "./oslo.JPG" ;
             useImage = 3;
             break;
-            case 3 : 
-            img1.src = "./NewYork.jpg" ;
+            case 3 :
+            img1.src = "./NewYork.JPG" ;
             useImage = 1;
             break;
         }
     }
+    
 
+    var good = 0;
+    var oops = 0;
+    function checkAuthor() {
+        var authorPassword = document.getElementById("password").value;
+        var authorCheck = document.getElementById("guessAuthor").value;
+        if (authorPassword == authorCheck) {
+            good++;
+            alert("You got it right");
+        } else {
+            oops++;
+            alert("Sorry");  
+        }
+
+   
+
+        if (oops > 6 ) {
+            let authButton = document.getElementById('authorBtn');
+            authButton.onclick = errorMsg ;
+        }        
+
+        document.getElementById("goodCounter").innerHTML = `Good count : ${good}`;
+        document.getElementById("oopsCounter").innerHTML = `Opps count : ${oops}`;      
+    }
+
+    function errorMsg() {
+        alert("Sorry, ran out of guesses");
+    }
 </script>
-
-</html> 
+</html>
