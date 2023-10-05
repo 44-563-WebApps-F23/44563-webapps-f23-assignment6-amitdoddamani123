@@ -21,14 +21,14 @@
 <p id="result"></p>
 
 <form>
-    <input type="radio" id="calSum" name="operation" value="sum" onclick="chooseOp()">
-    <label for="calSum">sum</label><br>
+    <input type="radio" id="calculateSum" name="operation" value="sum" onclick="chooseOp()">
+    <label for="calculateSum">sum</label><br>
   
-    <input type="radio" id="calDiff" name="operation" value="difference" onclick="chooseOp()">
-    <label for="calDiff">diff</label><br>
+    <input type="radio" id="calculateDiff" name="operation" value="difference" onclick="chooseOp()">
+    <label for="calculateDiff">diff</label><br>
   
-    <input type="radio" id="calMult" name="operation" value="product" onclick="chooseOp()">
-    <label for="calMult">mult</label><br>
+    <input type="radio" id="calculateMulti" name="operation" value="product" onclick="chooseOp()">
+    <label for="calculateMulti">mult</label><br>
 </form>
 
   <p id="operation_Result"></p>
@@ -36,20 +36,20 @@
 <script> 
 
 function tips() {
-        const baseCount = parseFloat(document.getElementById('BaseAmt').value);
-        const tipCount = parseFloat(document.getElementById('TipsPercentage').value);
-            let myOutput="";
-            let toShow= "";
+        const baseAmtCount = parseFloat(document.getElementById('BaseAmt').value);
+        const tipAmtCount = parseFloat(document.getElementById('TipsPercentage').value);
+            let Output="";
+            let displayValue= "";
 
             for (let i = 0; i < 5; i++) {
-                const tipLevel = tipCount + i * 4;
-                const calculatedTip = (baseCount * tipLevel) / 100;
-                toShow += `${tipLevel}% is ${calculatedTip.toFixed(1)}; `;
+                const tipLevel =i * 4 + tipAmtCount ;
+                const calculatedTip = (baseAmtCount * tipLevel) / 100;
+                displayValue += `${tipLevel}% is ${calculatedTip.toFixed(1)}; `;
             }
 
-            myOutput = `Tips are: ${toShow}`;
+            Output = `Tips are: ${displayValue}`;
 
-            document.getElementById('result').textContent = myOutput;
+            document.getElementById('result').textContent = Output;
         }
 
     

@@ -82,9 +82,20 @@ function resolveForm (){
             oops=oops+1;
             alert("Sorry");
         }
+
+        if (oops > 6 ) {
+            let authButton = document.getElementById('authorBtn');
+            authButton.onclick = errorMsg ;
+        }
         
         resultValue.innerHTML = `Correct Guess= ${good} | Incorrect Guess= ${oops}`;
     }
+
+
+    function errorMsg() {
+        alert("Sorry, ran out of guesses");
+    }
+    
 </script>
 </div>
 <div class="ImageContainer">
